@@ -1,0 +1,12 @@
+{
+  "name": "Node.js",
+  "version": "1.0.0",
+  "description": "Sample code of Node.js program",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Musa Sutisna <mus4.sutisn4@gmail.com> (http://github.com/mu545)",
+  "license": "MIT"
+}
