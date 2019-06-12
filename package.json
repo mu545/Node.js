@@ -8,5 +8,8 @@
   },
   "keywords": [],
   "author": "Musa Sutisna <mus4.sutisn4@gmail.com> (http://github.com/mu545)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "googleapis": "39.2.0"
+  }
 }
