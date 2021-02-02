@@ -1,0 +1,11 @@
+# Logs
+logs
+*.log
+# enviroment file
+app.env
+# denied node_modules
+node_modules
+# debug log from npm
+npm-debug.log
+# allow package.lock
+!package-lock.json

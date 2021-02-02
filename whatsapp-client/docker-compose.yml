@@ -1,0 +1,37 @@
+version: "3.7"
+services:
+  mongodb:
+    container_name: whatsapp-mongodb
+    image: whatsapp-mongodb:0.0.1
+    build: ./mongodb
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongodb/mongod.log:/etc/mongod.log
+      - ./mongodb/data:/data/db
+      - ./mongodb/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: 'root'
+      MONGO_INITDB_ROOT_PASSWORD: 'whatsapp'
+      MONGO_INITDB_DATABASE: 'whatsapp'
+    networks:
+      - whatsapp
+    command:
+      - '--auth'
+  nodejs:
+    container_name: whatsapp-nodejs
+    image: whatsapp-nodejs:0.0.1
+    build: ./node.js
+    ports:
+      - 3000:3000
+    volumes:
+      - ./app:/home/node/app
+    env_file:
+      - ./app/app.env
+    networks:
+      - whatsapp
+
+networks:
+  whatsapp:
+    name: whatsapp
+    driver: bridge

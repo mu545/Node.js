@@ -1,0 +1,36 @@
+{
+  "name": "whatsapp-client",
+  "version": "0.0.1",
+  "description": "Whatsapp client server",
+  "main": "app.js",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/musasutisna/Node.js.git"
+  },
+  "keywords": [
+    "whatsapp"
+  ],
+  "author": "Musa Sutisna",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/musasutisna/Node.js/issues"
+  },
+  "homepage": "https://github.com/musasutisna/Node.js#readme",
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "express-validator": "^6.2.0",
+    "http-errors": "~1.6.3",
+    "mongoose": "^5.11.14",
+    "morgan": "~1.9.1",
+    "whatsapp-web.js": "^1.12.1"
+  }
+}
