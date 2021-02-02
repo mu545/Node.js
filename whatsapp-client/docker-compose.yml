@@ -19,6 +19,8 @@ services:
     command:
       - '--auth'
   nodejs:
+    depends_on:
+      - mongodb
     container_name: whatsapp-nodejs
     image: whatsapp-nodejs:0.0.1
     build: ./node.js
