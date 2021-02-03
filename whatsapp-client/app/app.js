@@ -4,7 +4,7 @@ const createError = require('http-errors')
 const express = require('express')
 const cookieParser = require('cookie-parser')
 
-const indexModels = require('./models/index.js')
+const { modelsMiddleware } = require('./models/index.js')
 const indexRouter = require('./routes/index.js')
 
 const app = express()
@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use('/', indexModels)
+app.use('/', modelsMiddleware)
 app.use('/', indexRouter)
 
 // catch 404 and forward to error handler

@@ -4,23 +4,25 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('whatsapp-client');
-var http = require('http');
-var mongoose = require('mongoose');
+const app = require('../app.js')
+const wa = require('../wa.js')
+const debug = require('debug')('whatsapp-client')
+const http = require('http')
+const mongoose = require('mongoose')
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '3000');
+
 app.set('port', port);
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+const server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -42,6 +44,9 @@ mongoose.connect(process.env.MONGO_STRING, {
     server.listen(port);
     server.on('error', onError);
     server.on('listening', onListening);
+
+    // Initialize whatsapp client
+    wa.runConnection()
   }
 });
 
