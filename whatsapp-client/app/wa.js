@@ -168,6 +168,8 @@ const sendFailedMessage = function () {
   models.message.findOne()
     .exec(function (err, message) {
       if (!err) {
+        if (message === null) return;
+
         const chatId = message.phone.substr(1) + '@c.us'
 
         client.sendMessage(chatId, message.content).then(function (res) {
