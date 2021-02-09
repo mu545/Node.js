@@ -135,7 +135,8 @@ const reciveMessage = function () {
 
 // Handle on client has ready
 const clientReady = function () {
-
+  // send failed message
+  sendFailedMessage()
 }
 
 /**
@@ -152,8 +153,40 @@ const sendMessage = function (phone, content, cb) {
   client.sendMessage(chatId, content).then(function (res) {
     cb(true)
   }).catch(function (err) {
+    console.error('Send Message:', err)
     saveMessage(phone, content, cb)
   })
+}
+
+/**
+ * Send failed message recursively.
+ *
+ * @param   Object
+ * @return  void
+ */
+const sendFailedMessage = function () {
+  models.message.findOne()
+    .exec(function (err, message) {
+      if (!err) {
+        const chatId = message.phone.substr(1) + '@c.us'
+
+        client.sendMessage(chatId, message.content).then(function (res) {
+          models.message.deleteOne({
+            _id: message._id
+          }, function (err) {
+            if (!err) {
+              sendFailedMessage()
+            } else {
+              console.error('Delete Message:', err)
+            }
+          })
+        }).catch(function (err) {
+          console.error('Send Message:', err)
+        })
+      } else {
+        console.error('Send Failed Message:', err)
+      }
+    })
 }
 
 // Save message to database
