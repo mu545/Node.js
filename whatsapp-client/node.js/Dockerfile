@@ -14,4 +14,6 @@ RUN apt-get update &&\
 
 EXPOSE 3000
 
+USER node
+
 CMD ["sh", "-c", "npm install && npm start"]
